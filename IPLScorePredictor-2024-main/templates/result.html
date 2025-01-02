@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="logo">
+                <h1>🏏 Score Analyser</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('predict') }}" class="active">Predict</a>
+                <a href="{{ url_for('models') }}">Models</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Result Section -->
+        <section class="result-section">
+            <h2>Calculated Results</h2>
+
+            <!-- Card for Result Text -->
+            <div class="result-card">
+                <p><strong>Win Probability:</strong> {{ win_probability }}%</p>
+                <p><strong>Loss Probability:</strong> {{ loss_probability }}%</p>
+                <p><strong>Batting Score:</strong> {{ batting_score }}</p>
+                <p><strong>Bowling Score:</strong> {{ bowling_score }}</p>
+            </div>
+
+            <!-- Flexbox Container for Graphs -->
+            <div class="charts-container">
+                <!-- Pie Chart for Win/Loss Probability -->
+                <div class="chart-container">
+                    <h3>Win/Loss Probability</h3>
+                    <canvas id="winLossChart"></canvas>
+                </div>
+
+                <!-- Bar Chart for Predicted Scores -->
+                <div class="chart-container">
+                    <h3>Projected Scores</h3>
+                    <canvas id="scoreChart"></canvas>
+                </div>
+            </div>
+
+            <a href="{{ url_for('home') }}" class="cta-button">Go Back to Home</a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Cricket Score Prediction | All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        // Data for charts
+        const winLossData = {
+            labels: ['Batting Team', 'Bowling Team'],
+            datasets: [{
+                label: 'Probability',
+                data: [{{ win_probability }}, {{ loss_probability }}],
+                backgroundColor: ['#ffdd57', '#ff6347'],
+                borderColor: ['#ffdd57', '#ff6347'],
+                borderWidth: 1
+            }]
+        };
+
+        const scoreData = {
+            labels: ['Batting Score', 'Bowling Score'],
+            datasets: [{
+                label: 'Predicted Scores',
+                data: [{{ batting_score }}, {{ bowling_score }}],
+                backgroundColor: ['#ffdd57', '#ff6347'],
+                borderColor: ['#ffdd57', '#ff6347'],
+                borderWidth: 1
+            }]
+        };
+
+        // Win/Loss Probability Pie Chart
+        const winLossCtx = document.getElementById('winLossChart').getContext('2d');
+        new Chart(winLossCtx, {
+            type: 'pie',
+            data: winLossData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 16,
+                                family: 'Roboto',
+                                weight: 'bold',
+                            },
+                            color: '#ffffff',
+                        },
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        titleFont: {
+                            size: 16,
+                            weight: 'bold',
+                        },
+                        bodyFont: {
+                            size: 14,
+                        },
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2) + '%';
+                            }
+                        },
+                    }
+                }
+            }
+        });
+
+        // Predicted Scores Bar Chart
+        const scoreCtx = document.getElementById('scoreChart').getContext('2d');
+        new Chart(scoreCtx, {
+            type: 'bar',
+            data: scoreData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 14,
+                                family: 'Roboto',
+                                weight: 'bold',
+                            },
+                            color: '#ffffff',
+                        },
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                size: 14,
+                                family: 'Roboto',
+                                weight: 'bold',
+                            },
+                            color: '#ffffff',
+                        },
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        titleFont: {
+                            size: 16,
+                            weight: 'bold',
+                        },
+                        bodyFont: {
+                            size: 14,
+                        },
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw.toFixed(2);
+                            }
+                        },
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #2b2d42, #8d99ae);
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffdd57;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    color: #ffffff;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(255, 221, 87, 0.7);
+    color: #2b2d42;
+    border-radius: 8px;
+}
+
+/* Result Section */
+.result-section {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.result-section h2 {
+    font-size: 2.5rem;
+    color: #ffdd57;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Card for result details */
+.result-card {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.result-card p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #d7d7d7;
+}
+
+.result-card strong {
+    color: #ffdd57;
+}
+
+/* Flex container for charts */
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Chart Container */
+.chart-container {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.chart-container h3 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Call to Action Button */
+.cta-button {
+    display: inline-block;
+    background: #ffdd57;
+    color: #2b2d42;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+}
+
+.cta-button:hover {
+    background: #ffd166;
+    transform: scale(1.1);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 20px 50px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    font-size: 0.9rem;
+    color: #d7d7d7;
+}

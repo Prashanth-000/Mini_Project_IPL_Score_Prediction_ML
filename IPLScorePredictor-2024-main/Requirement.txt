@@ -1,0 +1,16 @@
+1.Unzip the zip folder and open it in VS code
+
+2.Install pandas Library
+3.Install Flask Library
+4.Install Jupyter notebook
+5.install jupyter notebook(Not necessary)
+6.Run model.py
+7.Run app.py
+8.Goto http://127.0.0.1:5000 in browser
+
+9.If there is a trace back error in result page:
+	*It is due to the version difference of flask and pandas library*
+	1.Go to model.py file
+	2.Replace "sparse" with "sparse_output"
+	3.Run model.py file(it will update the model)
+	4.Run app.py

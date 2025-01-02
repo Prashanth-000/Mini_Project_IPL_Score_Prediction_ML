@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket Score Analysing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function validateTeams() {
+      const team_target = document.getElementById("target");
+      const team_score = document.getElementById("score");
+
+      var battingTeam = document.getElementById("batting_team").value;
+      var bowlingTeam = document.getElementById("bowling_team").value;
+
+      // Check if batting and bowling teams are the same
+      if (battingTeam === bowlingTeam) {
+        alert("Batting Team and Bowling Team cannot be the same.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+
+<body class="bg-gradient-to-r from-blue-200 via-indigo-300 to-purple-400 text-gray-800 flex items-center justify-center min-h-screen">
+
+  <div class="w-full max-w-lg p-8 bg-white bg-opacity-80 shadow-lg rounded-lg">
+
+    <h1 class="text-4xl font-semibold text-center text-indigo-800 mb-6">Score Analyzing Tool</h1>
+
+    <form action="/predict" method="post" onsubmit="return validateTeams();">
+
+      <div class="relative w-full my-4">
+        <label for="batting_team" class="block text-gray-700 font-medium">Select Batting Team</label>
+        <select name="batting_team" id="batting_team" class="w-full p-4 bg-blue-50 border border-blue-300 rounded-md focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+          <option value="Mumbai Indians">Mumbai Indians</option>
+          <option value="Gujarat Titans">Gujarat Titans</option>
+          <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+          <option value="Delhi Capitals">Delhi Capitals</option>
+          <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+          <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+          <option value="Lucknow Super Giants">Lucknow Super Giants</option>
+          <option value="Rajasthan Royals">Rajasthan Royals</option>
+          <option value="Chennai Super Kings">Chennai Super Kings</option>
+          <option value="Punjab Kings">Punjab Kings</option>
+        </select>
+      </div>
+
+      <div class="relative w-full my-4">
+        <label for="bowling_team" class="block text-gray-700 font-medium">Select Bowling Team</label>
+        <select name="bowling_team" id="bowling_team" required class="w-full p-4 bg-green-50 border border-green-300 rounded-md focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+          <option value="Mumbai Indians">Mumbai Indians</option>
+          <option value="Gujarat Titans">Gujarat Titans</option>
+          <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+          <option value="Delhi Capitals">Delhi Capitals</option>
+          <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+          <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+          <option value="Lucknow Super Giants">Lucknow Super Giants</option>
+          <option value="Rajasthan Royals">Rajasthan Royals</option>
+          <option value="Chennai Super Kings">Chennai Super Kings</option>
+          <option value="Punjab Kings">Punjab Kings</option>
+        </select>
+      </div>
+
+      <div class="relative w-full my-4">
+        <label for="selected_city" class="block text-gray-700 font-medium">Select Venue</label>
+        <select name="selected_city" required class="w-full p-4 bg-teal-50 border border-teal-300 rounded-md focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+          <option value="Mumbai">Mumbai</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Visakhapatnam">Visakhapatnam</option>
+          <option value="Indore">Indore</option>
+          <option value="Durban">Durban</option>
+          <option value="Chandigarh">Chandigarh</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Dharamsala">Dharamsala</option>
+          <option value="Ranchi">Ranchi</option>
+          <option value="Nagpur">Nagpur</option>
+          <option value="Mohali">Mohali</option>
+          <option value="Pune">Pune</option>
+          <option value="Bengaluru">Bengaluru</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Port Elizabeth">Port Elizabeth</option>
+          <option value="Centurion">Centurion</option>
+          <option value="Raipur">Raipur</option>
+          <option value="Sharjah">Sharjah</option>
+          <option value="Cuttack">Cuttack</option>
+          <option value="Johannesburg">Johannesburg</option>
+          <option value="Cape Town">Cape Town</option>
+          <option value="East London">East London</option>
+          <option value="Abu Dhabi">Abu Dhabi</option>
+          <option value="Kimberley">Kimberley</option>
+          <option value="Bloemfontein">Bloemfontein</option>
+        </select>
+      </div>
+
+      <div class="relative w-full my-4">
+        <label for="target" class="block text-gray-700 font-medium">Target</label>
+        <input min="0" class="w-full p-4 bg-yellow-50 border border-yellow-300 rounded-md focus:ring-2 focus:ring-indigo-600 focus:outline-none" type="number" name="target" required>
+      </div>
+
+      <div class="relative w-full my-4">
+        <label for="score" class="block text-gray-700 font-medium">Score</label>
+        <input min="0" class="w-full p-4 bg-pink-50 border border-pink-300 rounded-md focus:ring-2 focus:ring-indigo-600 focus:outline-none" type="number" name="score" required>
+      </div>
+
+      <div class="relative w-full my-4">
+        <label for="balls_left" class="block text-gray-700 font-medium">Balls Left</label>
+        <input min="0" max="120" class="w-full p-4 bg-purple-50 border border-purple-300 rounded-md focus:ring-2 focus:ring-indigo-600 focus:outline-none" type="number" name="balls_left" required>
+      </div>
+
+      <div class="relative w-full my-4">
+        <label for="wickets" class="block text-gray-700 font-medium">Wickets Down</label>
+        <input min="0" max="9" class="w-full p-4 bg-indigo-50 border border-indigo-300 rounded-md focus:ring-2 focus:ring-indigo-600 focus:outline-none" type="number" name="wickets" required>
+      </div>
+
+      <button type="submit" class="w-full py-3 mt-6 bg-indigo-700 hover:bg-indigo-800 text-white font-semibold rounded-lg shadow-md focus:ring-2 focus:ring-indigo-500">Submit</button>
+    </form>
+  </div>
+
+</body>
+
+</html>

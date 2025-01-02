@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model - Cricket Score Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/model.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="logo">
+                <h1>🏏 Score Analyser</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('predict') }}">Predict</a>
+                <a href="{{ url_for('models') }}" class="active">Models</a>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </header>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <h2>Learn about implemented model</h2>
+            <p>
+                We use the <b><a id="model_type" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html" target="_blank" class="social-link">Random Forest Classifier</a></b> model, leveraging machine learning and data analytics techniques to predict cricket match outcomes with high accuracy. The model analyzes historical data, player performance, and match conditions to provide reliable predictions for upcoming matches.
+            </p>
+            <p>
+                The **Random Forest** model works by building multiple decision trees, each trained on a random subset of the data, and combines their predictions through majority voting to improve accuracy and reduce overfitting. The model also excels in handling large datasets and non-linear relationships, which are often found in sports prediction scenarios. It provides a robust method to forecast outcomes while minimizing errors caused by bias and variance.
+            </p>
+            <p>
+                The model handles both **categorical** and **numerical data** effectively, making it adaptable for analyzing different types of data such as player stats, venue conditions, and match variables. Additionally, it’s highly scalable, allowing for the inclusion of numerous features and historical data without compromising prediction quality.
+            </p>
+            <div class="download-buttons">
+                <a href="{{ url_for('static', filename='files/model_file.pkl') }}" class="download-btn" download>Download Model</a>
+                <a href="{{ url_for('static', filename='files/dataset.csv') }}" class="download-btn" download>Download Dataset</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Cricket Score Prediction | All Rights Reserved</p>
+        </footer>
+    </div>
+</body>
+</html>

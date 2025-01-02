@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom Background Gradient for full page */
+    body, html {
+    text-align: center;
+      height: 100%;
+      margin: 0;
+      background: linear-gradient(to bottom, #6EE7B7, #3B82F6);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Hover effect for cards */
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Container to avoid unwanted space or overflow */
+    .container {
+      min-height: 100vh;
+      min-width: 100vw;
+    }
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+  <div class="container pt-4">
+    <!-- Background for the page -->
+    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+      <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#f00f31] to-[#f00f31] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+      </div>
+    </div>
+
+    <div class="py-24 sm:py-16 lg:pb-40">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <!-- Title Section -->
+          <h1 class="text-5xl font-extrabold text-blue-900 sm:text-6xl">Results</h1>
+          <p class="mt-4 text-xl text-gray-600">Here are the results of the match prediction based on your input!</p>
+        </div>
+
+        <!-- Results Container -->
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Batting Team Probability -->
+          <section class="card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
+            <h2 class="text-2xl font-semibold text-indigo-800 mb-4">Batting Team Winning Probability</h2>
+            <p class="text-4xl font-bold text-indigo-700">{{ win_probability }}%</p>
+          </section>
+
+          <!-- Bowling Team Probability -->
+          <section class="card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
+            <h2 class="text-2xl font-semibold text-indigo-800 mb-4">Bowling Team Winning Probability</h2>
+            <p class="text-4xl font-bold text-indigo-700">{{ loss_probability }}%</p>
+          </section>
+        </div>
+
+        <!-- Scores Container -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Batting Team Score -->
+          <section class="card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
+            <h2 class="text-2xl font-semibold text-green-700 mb-4">{{ batting_team }} Score</h2>
+            <p class="text-4xl font-bold text-green-600">{{ batting_score }}</p>
+          </section>
+
+          <!-- Bowling Team Score -->
+          <section class="card bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all">
+            <h2 class="text-2xl font-semibold text-green-700 mb-4">{{ bowling_team }} Score</h2>
+            <p class="text-4xl font-bold text-green-600">{{ bowling_score }}</p>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

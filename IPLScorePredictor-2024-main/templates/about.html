@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Cricket Score Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="logo">
+                <h1>🏏 Score Analyser</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="{{ url_for('home') }}" >Home</a>
+                <a href="{{ url_for('predict') }}">Predict</a>
+                <a href="{{ url_for('models') }}" >Models</a>
+                <a href="{{ url_for('about') }}" class="active">About</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </nav>
+        </header>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <h2>About This Project</h2>
+            <p>
+                This project applies machine learning techniques to create a reliable system for predicting cricket match scores. The Random Forest Classifier was chosen for its robustness in handling large datasets and its ability to manage both categorical and numerical data effectively. It works by constructing multiple decision trees and combining their outputs to produce a final prediction.</p>
+            </p>
+            <p>
+                The Random Forest Classifier is effective due to its ability to manage both categorical and numerical data and reduce overfitting by combining the outputs of multiple decision trees. This model provides insights into the most impactful features, such as player performance, weather conditions, and venue specifics.
+            </p>
+            <p>
+                Trained on a large dataset, the model predicts match outcomes with high accuracy. By analyzing factors like weather, pitch conditions, and match stats, it helps in decision-making and strategy planning. The system is scalable and can integrate additional data sources to further improve prediction accuracy.
+            </p>
+            <p>
+                <b>Technologies used:</b> Python, Random Forest Classifier, Pandas, Scikit-learn, NumPy, Matplotlib, Flask.
+            </p>
+
+            <h3>Model Performance</h3>
+            <div class="metrics-table">
+                <table>
+                    <tr>
+                        <th>Accuracy</th>
+                        <th>Precision</th>
+                    </tr>
+                    <tr>
+                        <td>91.89%</td>
+                        <td>0.97</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h4>Confusion Matrix:</h4>
+            <div class="confusion-matrix">
+                <table>
+                    <tr>
+                        <th>True Positive</th>
+                        <th>False Positive</th>
+                    </tr>
+                    <tr>
+                        <td>15064</td>
+                        <td><b>10</b></td>
+                    </tr>
+                    <tr>
+                        <th>False Negative</th>
+                        <th>True Negative</th>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td><b>11558</b></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>Feature Importance</h3>
+            <div class="feature-importance">
+                <img src="{{ url_for('static', filename='images/Figure_1.png') }}" alt="Feature Importance Bar Graph" class="feature-graph">
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 Cricket Score Prediction | All Rights Reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
